@@ -6,7 +6,7 @@ RSpec.describe "When calling the forecast endpoint" do
     expect(response).to have_http_status(:success)
 
     forecast = JSON.parse(response.body, symbolize_names: true)
-
+    
     expect(forecast.keys).to match_array([:location, :current, :weekly_info, :hourly_info])
 
   end

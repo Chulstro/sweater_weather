@@ -36,8 +36,8 @@ class Forecast
 
   def accumulation(weather_by_day)
     {
-      snow: weather_by_day[:snow],
-      rain: weather_by_day[:rain]
+      snow: weather_by_day[:snow].to_i,
+      rain: weather_by_day[:rain].to_i
     }
   end
 end
