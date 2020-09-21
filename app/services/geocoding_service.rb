@@ -1,5 +1,6 @@
 class GeocodingService
 
+  # Consider moving coordinates and city to session info in application controller
   def city_to_latlon(location)
     results = to_json("geocoding/v1/address?location=#{location}")
     {
