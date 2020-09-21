@@ -1,7 +1,7 @@
 class MountainProjectService
 
   def nearby_routes(location)
-    to_json("get-routes-for-lat-lon?lat=#{location[:lat]}&lon=#{location[:lng]}&maxDistance=100@maxResults=20")
+    to_json("get-routes-for-lat-lon?lat=#{location[:lat]}&lon=#{location[:lng]}&maxDistance=100&maxResults=20")
   end
 
   private
