@@ -8,6 +8,8 @@ class Routes
     @forecast = format_weather(weather(location))
   end
 
+  #API Calls
+
   def weather(location)
     OpenWeatherService.new.current_weather(location[:coord])
   end
@@ -15,6 +17,8 @@ class Routes
   def climb_suggestions(location)
     MountainProjectService.new.nearby_routes(location[:coord])
   end
+
+  #Formattings
 
   def format_routes(routes)
     routes[:routes].map do |route|
@@ -36,6 +40,8 @@ class Routes
       temperature: temp_convert(weather_info[:main][:temp]).to_i
     }
   end
+
+  #This temp converter is used multiple times. Thinking of pulling it into a module?
 
   def temp_convert(temp_k)
     (temp_k - 273.15) * 5 / 9 + 32
