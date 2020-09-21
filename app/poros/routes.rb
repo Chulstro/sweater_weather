@@ -1,11 +1,19 @@
 class Routes
   attr_reader :location, :routes, :forecast, :id
 
-  def initialize(weather, routes, location)
+  def initialize(location)
     @id = 1
     @location = location[:city]
-    @routes = format_routes(routes)
-    @forecast = format_weather(weather)
+    @routes = format_routes(climb_suggestions(location))
+    @forecast = format_weather(weather(location))
+  end
+
+  def weather(location)
+    OpenWeatherService.new.current_weather(location[:coord])
+  end
+
+  def climb_suggestions(location)
+    MountainProjectService.new.nearby_routes(location[:coord])
   end
 
   def format_routes(routes)
