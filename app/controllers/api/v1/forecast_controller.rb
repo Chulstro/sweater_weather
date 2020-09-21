@@ -1,8 +1,8 @@
 class Api::V1::ForecastController < ApplicationController
   def index
-    weather_info = OpenWeatherService.new.pull_forecast(get_lat_lon)
-    forecast = Forecast.new(weather_info, params[:location])
-    render json: ForecastSerializer.new(forecast)
+    weather_info = OpenWeatherService.new.pull_forecast(get_lat_lon[:coord])
+    forecast = Forecast.new(weather_info, get_lat_lon[:city])
+    render json: forecast
   end
 
   private

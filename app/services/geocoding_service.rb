@@ -2,14 +2,25 @@ class GeocodingService
 
   def city_to_latlon(location)
     results = to_json("address?location=#{location}")
-    results[:results][0][:locations][0][:latLng]
+    {
+    coord: results[:results][0][:locations][0][:latLng],
+    city: "#{city(results)},#{state(results)}"
+    }
   end
 
-  def latlon_to_city(location)
-    results = to_json("reverse?location=#{location[:lat]},#{location[:Lng]}")
-  end
+  # def latlon_to_city(location)
+  #   session[:location]
+  # end
 
   private
+
+  def city(geopoint)
+    geopoint[:results][0][:locations][0][:adminArea5]
+  end
+
+  def state(geopoint)
+    geopoint[:results][0][:locations][0][:adminArea3]
+  end
 
   def to_json(url)
     response = conn.get(url)

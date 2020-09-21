@@ -5,9 +5,9 @@ RSpec.describe "When calling the forecast endpoint" do
     get '/api/v1/forecast?location=longmont,co'
     expect(response).to have_http_status(:success)
 
-    forecast = JSON.parse(response.body)
+    forecast = JSON.parse(response.body, symbolize_names: true)
 
-    expect(hash_body.keys).to match_array([:location, :date, :daily_info, :hourly_info])
+    expect(forecast.keys).to match_array([:location, :current, :weekly_info, :hourly_info])
 
   end
 end
