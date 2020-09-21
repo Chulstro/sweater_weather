@@ -6,10 +6,9 @@ RSpec.describe 'When calling a climbing route endpoint' do
     expect(response).to have_http_status(:success)
 
     routes = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
 
-    expect(routes[:attributes].keys).to  match_array([:location, :routes, :forecast])
-    expect(routes[:attributes][:forecast].keys).to  match_array([:summary, :temperature])
-    expect(routes[:attributes][:routes][0].keys).to  match_array([:sname, :type, :rating, :location])
+    expect(routes[:data][:attributes].keys).to  match_array([:location, :routes, :forecast])
+    expect(routes[:data][:attributes][:forecast].keys).to  match_array([:summary, :temperature])
+    expect(routes[:data][:attributes][:routes][0].keys).to  match_array([:name, :type, :rating, :location, :distance_to_route])
   end
 end

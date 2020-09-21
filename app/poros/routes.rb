@@ -3,7 +3,7 @@ class Routes
 
   def initialize(weather, routes, location)
     @id = 1
-    @location = location
+    @location = location[:city]
     @routes = format_routes(routes)
     @forecast = format_weather(weather)
   end
