@@ -41,6 +41,7 @@ group :development, :test do
   gem 'fast_jsonapi'
   gem 'faker'
   gem 'faraday'
+  gem 'figaro'
 end
 
 group :development do
