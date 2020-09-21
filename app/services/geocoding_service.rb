@@ -8,10 +8,6 @@ class GeocodingService
     }
   end
 
-  # def latlon_to_city(location)
-  #   session[:location]
-  # end
-
   private
 
   def city(geopoint)

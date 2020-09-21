@@ -4,6 +4,10 @@ class OpenWeatherService
     to_json("onecall?lat=#{location[:lat]}&lon=#{location[:lng]}&exclude=minutely")
   end
 
+  def current_weather(location)
+    to_json("weather?lat=#{location[:lat]}&lon=#{location[:lng]}")
+  end
+
   private
 
   def to_json(url)

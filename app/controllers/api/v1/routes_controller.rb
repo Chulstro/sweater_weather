@@ -1,9 +1,8 @@
 class Api::V1::RoutesController < ApplicationController
   def index
-    binding.pry
-    get_location
-    OpenWeatherService.new.current_weather()
-    #need suggested routes
+    weather_info = OpenWeatherService.new.current_weather(get_location[:coord])
+    route_info = MountainProjectService.new.nearby_routes(get_location[:coord])
+    climbing_info = Routes.new(weather_info, route_info)
     render json: climbing_info
   end
 
