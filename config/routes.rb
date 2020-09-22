@@ -6,6 +6,7 @@ namespace :api do
     get '/backgrounds', to: 'backgrounds#show'
     post '/users', to: 'users#create'
     post '/sessions', to: 'users#show'
+    post '/road_trip', to: 'trips#show'
   end
 end
 end
