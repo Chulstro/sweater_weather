@@ -42,6 +42,7 @@ group :development, :test do
   gem 'faker'
   gem 'faraday'
   gem 'figaro'
+  gem 'bcrypt'
 end
 
 group :development do
