@@ -5,6 +5,7 @@ namespace :api do
     get '/forecast', to: 'forecast#index'
     get '/backgrounds', to: 'backgrounds#show'
     post '/users', to: 'users#create'
+    post '/sessions', to: 'users#show'
   end
 end
 end

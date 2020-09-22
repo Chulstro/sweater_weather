@@ -8,6 +8,15 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def show
+    user = User.find_by(email: params[:email])
+    if !user.nil? && user.authenticate(params[:password])
+      render json: UserSerializer.new(user), status: 200
+    else
+      render json: {error: "You input an incorrect email or password"}, status: 400
+    end
+  end
+
   private
 
   def user_params
