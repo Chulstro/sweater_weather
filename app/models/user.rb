@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   after_create :create_api_key
-  #Is this right?
   has_secure_password
 
   validates_uniqueness_of :email
