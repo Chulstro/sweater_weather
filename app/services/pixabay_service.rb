@@ -1,7 +1,7 @@
 class PixabayService
   def city_image(location)
     city = location.split(",").first
-    Background.new(to_json("?q=#{city}")[:hits].first, location)
+    to_json("?q=#{city}")
   end
 
   private

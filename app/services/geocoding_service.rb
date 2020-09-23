@@ -1,11 +1,7 @@
 class GeocodingService
 
   def city_to_latlon(location)
-    results = to_json("geocoding/v1/address?location=#{location}")
-    {
-    coord: results[:results][0][:locations][0][:latLng],
-    city: "#{city(results)},#{state(results)}"
-    }
+    to_json("geocoding/v1/address?location=#{location}")
   end
 
   def distance_between(point_1, point_2)
@@ -13,14 +9,6 @@ class GeocodingService
   end
 
   private
-
-  def city(geopoint)
-    geopoint[:results][0][:locations][0][:adminArea5]
-  end
-
-  def state(geopoint)
-    geopoint[:results][0][:locations][0][:adminArea3]
-  end
 
   def to_json(url)
     response = conn.get(url)

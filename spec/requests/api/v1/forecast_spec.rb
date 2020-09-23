@@ -7,7 +7,8 @@ RSpec.describe "When calling the forecast endpoint" do
 
     forecast = JSON.parse(response.body, symbolize_names: true)
 
-    expect(forecast.keys).to match_array([:location, :current, :weekly_info, :hourly_info])
+    expect(forecast[:data].keys).to match_array([:id, :type, :attributes])
+    expect(forecast[:data][:attributes].keys).to match_array([:location, :current, :weekly_info, :hourly_info])
 
   end
 end
