@@ -1,11 +1,11 @@
 class GeocodingService
 
   def city_to_latlon(location)
-    results = to_json("geocoding/v1/address?location=#{location}")
-    {
-    coord: results[:results][0][:locations][0][:latLng],
-    city: "#{city(results)},#{state(results)}"
-    }
+    to_json("geocoding/v1/address?location=#{location}")
+    # {
+    # coord: results[:results][0][:locations][0][:latLng],
+    # city: "#{city(results)},#{state(results)}"
+    # }
   end
 
   def distance_between(point_1, point_2)
