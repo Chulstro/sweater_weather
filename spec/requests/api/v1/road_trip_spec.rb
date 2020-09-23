@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "When posting a road trip endpoint" do
   it "returns pertinent info" do
-    User.create({
+    user = User.create({
       email: 'nerds@example.com',
       password: 'password',
       password_confirmation: 'password'
       })
     trip_params = {
-      origin: "denver,co",
-      destination: "las vegas,nm",
+      origin: "Denver,CO",
+      destination: "Pueblo,CO",
       api_key: user.api_key
     }
     post '/api/v1/road_trip', params: trip_params
