@@ -9,7 +9,9 @@ describe OpenWeatherService do
         weather = service.pull_forecast(location)
         expect(weather).to be_a Hash
 
-        expect(weather.keys).to match_array([:lat, :lon, :timezone, :timezone_offset, :current, :hourly, :daily])
+        expect(weather).to have_key(:current)
+        expect(weather).to have_key(:hourly)
+        expect(weather).to have_key(:daily)
       end
     end
   end
